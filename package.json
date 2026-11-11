@@ -1,0 +1,9 @@
+{
+  "name": "nextcloud-phone-system-dev",
+  "private": true,
+  "description": "Development tools for the Phone System Nextcloud app; not shipped with the app.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/js/*.test.mjs"
+  }
+}

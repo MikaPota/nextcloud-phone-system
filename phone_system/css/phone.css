@@ -1,0 +1,35 @@
+.phone-system { padding: 16px; max-width: 360px; margin: 0 auto; font-size: 15px; }
+.phone-status { color: var(--color-text-maxcontrast); }
+.phone-remote { font-size: 22px; font-weight: bold; min-height: 1.4em; }
+.phone-form { display: flex; gap: 8px; }
+.phone-form input { flex: 1; }
+.phone-actions { display: flex; gap: 8px; margin-top: 12px; }
+.phone-admin-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.phone-admin-row input { min-width: 280px; }
+.phone-admin-users td, .phone-admin-users th { padding: 4px 8px; text-align: left; }
+.phone-history { list-style: none; padding: 0; margin-top: 16px; }
+.phone-history li { display: flex; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--color-border); }
+.phone-history .missed { color: var(--color-error-text, var(--color-error)); }
+body:has(#phone-system):not(:has(#header)) { background: var(--color-main-background) !important; color: var(--color-main-text); }
+.phone-system h3 { margin-top: 20px; }
+.phone-system .phone-history a { color: var(--color-main-text); }
+.phone-system-launcher svg { width: 20px; height: 20px; }
+.phone-setup { padding: 24px; max-width: 760px; }
+.phone-setup-message.error, .phone-setup .error { color: var(--color-error-text, var(--color-error)); }
+.phone-setup-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.phone-setup-card { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; text-align: left; padding: 20px; border: 1px solid var(--color-border); border-radius: var(--border-radius-large, 12px); background: var(--color-main-background); height: auto; white-space: normal; }
+.phone-setup-card strong { font-size: 17px; }
+.phone-setup-form { display: flex; flex-direction: column; gap: 12px; max-width: 520px; }
+.phone-setup-form label { display: flex; flex-direction: column; gap: 4px; }
+.phone-setup-form label.phone-setup-plan, .phone-setup-accept { flex-direction: row; align-items: center; gap: 8px; }
+.phone-setup-plan { padding: 10px; border: 1px solid var(--color-border); border-radius: 8px; }
+.phone-setup-plan span { flex: 1; }
+.phone-setup-terms { display: flex; gap: 8px; }
+.phone-setup-system { border: 1px solid var(--color-border); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+.phone-setup-stages { list-style: none; padding: 0; }
+.phone-setup-stages .stage-complete { color: var(--color-success-text, var(--color-success)); }
+.phone-setup-users { display: flex; flex-direction: column; gap: 4px; margin: 8px 0; }
+.phone-setup-users label { display: flex; gap: 8px; align-items: center; }
+.phone-setup-stripe { min-height: 500px; }
+/* Inside Nextcloud (not the phone window) the phone sits on a card, as other apps' content does. */
+#content .phone-system { background: var(--color-main-background); border-radius: var(--border-radius-container-large, 16px); margin-top: 24px; padding: 20px 24px; box-shadow: 0 0 10px var(--color-box-shadow); }

@@ -1,0 +1,25 @@
+{
+    "name": "gcna/nextcloud-phone-system-dev",
+    "description": "Development tools for the Phone System Nextcloud app; not shipped with the app.",
+    "license": "AGPL-3.0-or-later",
+    "require-dev": {
+        "phpunit/phpunit": "^11.5",
+        "nextcloud/ocp": "dev-stable32"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OCA\\PhoneSystem\\": "phone_system/lib/",
+            "OCA\\PhoneSystem\\Tests\\": "tests/php/",
+            "OCP\\": "vendor/nextcloud/ocp/OCP/",
+            "NCU\\": "vendor/nextcloud/ocp/NCU/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "8.2"
+        },
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

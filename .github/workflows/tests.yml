@@ -1,0 +1,52 @@
+# The app's automated tests: PHP (syntax on every supported PHP, unit tests against Nextcloud's
+# public API) and JavaScript (the phone window's error texts, the shared client copy).
+name: tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  php:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.2', '8.3', '8.4']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          tools: composer
+      - name: Syntax
+        run: find phone_system -name '*.php' -print0 | xargs -0 -n1 php -l
+      - run: composer install --no-interaction --no-progress
+      - run: vendor/bin/phpunit
+
+  js:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Syntax
+        run: for f in phone_system/js/*.mjs phone_system/js/*.js; do node --check "$f"; done
+      - run: npm test
+
+  appinfo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+      - name: info.xml against the App Store schema
+        run: |
+          curl -fsSL https://apps.nextcloud.com/schema/apps/info.xsd -o info.xsd
+          php -r '$d = new DOMDocument(); $d->load("phone_system/appinfo/info.xml"); exit($d->schemaValidate("info.xsd") ? 0 : 1);'
