@@ -21,6 +21,7 @@ The phone system is hosted by GCNA in the EU. Guides and the service provider's 
     <category>workflow</category>
     <website>https://gcn-alliance.com/support/nextcloud/</website>
     <bugs>https://gcn-alliance.com/support/nextcloud/#contact</bugs>
+    <repository type="git">https://github.com/MikaPota/nextcloud-phone-system</repository>
     <screenshot>https://gcn-alliance.com/support/nextcloud/screenshots/phone.png</screenshot>
     <screenshot>https://gcn-alliance.com/support/nextcloud/screenshots/missed-call.png</screenshot>
     <screenshot>https://gcn-alliance.com/support/nextcloud/screenshots/contacts.png</screenshot>
