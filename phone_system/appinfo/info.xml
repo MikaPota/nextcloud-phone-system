@@ -11,6 +11,8 @@
 - **Missed calls:** a notification with a "Call back" button, and the call history on your dashboard.
 - **For administrators:** buy a phone system in Nextcloud's administration, or link one you already have, then give the selected users an extension in one step.
 
+Phone System does not replace Nextcloud Talk; it adds a business phone system next to it. Talk is for chat and video meetings. Phone System brings your company's phone numbers and calls to and from the public phone network, with call queues, voice menus, call recording, desk phones and mobile apps.
+
 Voice runs in the browser with WebRTC; no softphone to install. Microphone access is needed.
 The phone system is hosted by GCNA in the EU. Guides and the service provider's contact: https://gcn-alliance.com/support/nextcloud/]]></description>
     <version>0.4.0</version>
