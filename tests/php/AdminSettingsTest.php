@@ -9,7 +9,13 @@ use PHPUnit\Framework\TestCase;
 /** Nextcloud 34 removed \OC::$server->getURLGenerator() and broke the admin page; only the public API (OCP) is safe across versions. */
 final class AdminSettingsTest extends TestCase {
 	public function testNoTemplateOrClassReachesIntoNextcloudsPrivateApi(): void {
-		$files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator(__DIR__ . '/../../phone_system', \FilesystemIterator::SKIP_DOTS));
+		foreach (['phone_system', 'bizzkickr'] as $app) {
+			$this->assertPublicApiOnly(__DIR__ . '/../../' . $app);
+		}
+	}
+
+	private function assertPublicApiOnly(string $directory): void {
+		$files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($directory, \FilesystemIterator::SKIP_DOTS));
 		foreach ($files as $file) {
 			if ($file->getExtension() !== 'php') {
 				continue;

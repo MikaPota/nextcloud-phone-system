@@ -11,14 +11,22 @@ partner. Voice runs in the browser with WebRTC.
 
 Guide for users and administrators: https://gcn-alliance.com/support/nextcloud/
 
+This repository also holds **BIZZKICKR**, a second app: every user's digital business card with its
+QR code, sent by email or from the contacts menu; whoever scans it asks to connect, and confirmed
+connections become contacts in the user's address book. BIZZKICKR is provided by COMWIZE and booked
+through GCN-ALLIANCE; an administrator connects the Nextcloud once with a free GCNA account (or the
+Phone System app's link).
+
 ## Layout
 
-- `phone_system/` – the Nextcloud app (Nextcloud 33 and 34)
+- `phone_system/` – the Phone System app (Nextcloud 33 and 34)
+- `bizzkickr/` – the BIZZKICKR app (Nextcloud 33 and 34)
 - `shared/` – the browser phone client (`phone-session.js` sign-in and
   signalling, `phone-calls.js` WebRTC calls), shared with the Odoo app;
   `phone_system/js/` holds a copy that must not drift (a test checks it)
 - `tests/` – PHPUnit and Node tests
-- `scripts/release.sh` – builds the App Store archive and its signature
+- `scripts/release.sh` – builds an app's App Store archive and its signature
+  (`scripts/release.sh` for Phone System, `scripts/release.sh bizzkickr`)
 
 ## Develop
 

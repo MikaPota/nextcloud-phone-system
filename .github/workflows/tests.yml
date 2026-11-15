@@ -23,7 +23,7 @@ jobs:
           coverage: none
           tools: composer
       - name: Syntax
-        run: find phone_system -name '*.php' -print0 | xargs -0 -n1 php -l
+        run: find phone_system bizzkickr -name '*.php' -print0 | xargs -0 -n1 php -l
       - run: composer install --no-interaction --no-progress
       - run: vendor/bin/phpunit
 
@@ -35,7 +35,7 @@ jobs:
         with:
           node-version: 22
       - name: Syntax
-        run: for f in phone_system/js/*.mjs phone_system/js/*.js; do node --check "$f"; done
+        run: for f in phone_system/js/*.mjs phone_system/js/*.js bizzkickr/js/*.mjs; do node --check "$f"; done
       - run: npm test
 
   appinfo:
@@ -49,4 +49,6 @@ jobs:
       - name: info.xml against the App Store schema
         run: |
           curl -fsSL https://apps.nextcloud.com/schema/apps/info.xsd -o info.xsd
-          php -r '$d = new DOMDocument(); $d->load("phone_system/appinfo/info.xml"); exit($d->schemaValidate("info.xsd") ? 0 : 1);'
+          for app in phone_system bizzkickr; do
+            php -r '$d = new DOMDocument(); $d->load($argv[1]); exit($d->schemaValidate("info.xsd") ? 0 : 1);' "$app/appinfo/info.xml"
+          done

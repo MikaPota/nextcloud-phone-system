@@ -10,6 +10,8 @@
         "psr-4": {
             "OCA\\PhoneSystem\\": "phone_system/lib/",
             "OCA\\PhoneSystem\\Tests\\": "tests/php/",
+            "OCA\\BizzKickR\\": "bizzkickr/lib/",
+            "OCA\\BizzKickR\\Tests\\": "tests/bizzkickr/",
             "OCP\\": "vendor/nextcloud/ocp/OCP/",
             "NCU\\": "vendor/nextcloud/ocp/NCU/"
         }

@@ -1,0 +1,18 @@
+.bizzkickr { padding: 24px; max-width: 760px; }
+.bizzkickr-message.error { color: var(--color-error-text, var(--color-error)); }
+.bizzkickr-hint { color: var(--color-text-maxcontrast); }
+.bizzkickr h3 { margin-top: 24px; }
+.bizzkickr-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.bizzkickr-row input[type=email] { min-width: 260px; }
+.bizzkickr-form { display: flex; flex-direction: column; gap: 10px; max-width: 520px; }
+.bizzkickr-form label { display: flex; flex-direction: column; gap: 4px; }
+.bizzkickr-form input:not([type=checkbox]) { width: 100%; max-width: 360px; }
+.bizzkickr-form label.bizzkickr-accept { flex-direction: row; align-items: center; gap: 8px; }
+.bizzkickr-card { display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start; }
+.bizzkickr-card .bizzkickr-form { flex: 1; min-width: 260px; }
+.bizzkickr-show { display: flex; flex-direction: column; gap: 8px; align-items: center; max-width: 260px; word-break: break-all; }
+.bizzkickr-qr { width: 240px; height: 240px; background: #fff; padding: 8px; border-radius: 8px; }
+.bizzkickr-requests { list-style: none; padding: 0; }
+.bizzkickr-requests li { display: flex; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--color-border); }
+.bizzkickr-requests li span { flex: 1; }
+.bizzkickr-accept a, .bizzkickr a { text-decoration: underline; }
