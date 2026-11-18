@@ -24,6 +24,7 @@ class Gcna {
 	private const PROOF_LABEL = 'gcna-installation-proof/v1:';
 	private const PHONE_SYSTEM = 'phone_system';
 	private const SCOPES = ['phone-system:manage', 'bizzkickr:use'];
+	private const RENEW_BEFORE = 7 * 86400;
 
 	public function __construct(
 		private IAppConfig $config,
@@ -93,6 +94,28 @@ class Gcna {
 			return self::PHONE_SYSTEM;
 		}
 		return null;
+	}
+
+	/**
+	 * GCNA's link lasts 30 days. With fewer than 7 left, renew this app's own link (Phone System renews its
+	 * own) and store the fresh token. Refused or unreachable: the stored link stays, the next run tries again.
+	 */
+	public function renewIfDue(): bool {
+		$stored = $this->config->getValueString(Application::APP_ID, 'installation_token');
+		if ($this->linkedThrough() !== Application::APP_ID) {
+			return false;
+		}
+		$token = json_decode($this->crypto->decrypt($stored), true);
+		if ($token['expires'] - time() > self::RENEW_BEFORE) {
+			return false;
+		}
+		try {
+			$this->storeToken($this->post('/v1/installation/renew', $this->identity(), [200], true));
+		} catch (BizzKickRError $error) {
+			$this->logger->warning('BIZZKICKR: GCNA link not renewed: {message}', ['message' => $error->getMessage()]);
+			return false;
+		}
+		return true;
 	}
 
 	private function token(): ?string {

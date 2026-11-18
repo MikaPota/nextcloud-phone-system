@@ -12,8 +12,10 @@
 - **Connections become contacts:** each confirmed connection appears in your address book. Later changes to their card follow, unless you changed that field yourself.
 
 Free. An administrator connects this Nextcloud to GCN-ALLIANCE once (free sign-up, or the existing link of the Phone System app); each user then registers with their own email address and confirms it.
-BIZZKICKR is provided by COMWIZE and booked through GCN-ALLIANCE. Guides and the service provider's contact: https://gcn-alliance.com/support/nextcloud/]]></description>
-    <version>0.1.0</version>
+BIZZKICKR is provided by COMWIZE and booked through GCN-ALLIANCE. Guides and the service provider's contact: https://gcn-alliance.com/support/nextcloud/
+
+More about the [digital business card with QR code](https://gcn-alliance.com/blog/digital-business-card-qr-code/).]]></description>
+    <version>0.1.1</version>
     <licence>agpl</licence>
     <author homepage="https://gcn-alliance.com">GCN Alliance</author>
     <namespace>BizzKickR</namespace>
@@ -25,6 +27,9 @@ BIZZKICKR is provided by COMWIZE and booked through GCN-ALLIANCE. Guides and the
     <dependencies>
         <nextcloud min-version="33" max-version="34"/>
     </dependencies>
+    <background-jobs>
+        <job>OCA\BizzKickR\BackgroundJob\RenewGcnaLink</job>
+    </background-jobs>
     <settings>
         <admin>OCA\BizzKickR\Settings\Admin</admin>
         <admin-section>OCA\BizzKickR\Settings\Section</admin-section>

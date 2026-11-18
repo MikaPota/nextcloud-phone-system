@@ -45,7 +45,7 @@ final class PeopleTest extends AppTestCase {
 		$this->gcna->answers[self::P . 'people'] = [202, ['state' => 'unconfirmed']];
 		$this->assertSame('unconfirmed', $people->register($this->eva())['state']);
 		$sent = $this->gcna->last(self::P . 'people');
-		$this->assertSame(['person' => 'eva@shop.test', 'lang' => 'de', 'companyName' => 'Shop GmbH'], $sent);
+		$this->assertSame(['person' => 'eva@shop.test', 'lang' => 'de', 'app' => 'nextcloud', 'companyName' => 'Shop GmbH'], $sent);
 		$this->assertSame('Bearer ' . str_repeat('t', 48), $this->gcna->calls[0][2]['Authorization']);
 
 		$this->gcna->answers[self::P . 'person'] = [200, ['state' => 'confirmed']];

@@ -124,7 +124,7 @@ class People {
 		$person = ['state' => 'none', 'email' => $email] + $person;
 		$this->email($user, $person);
 		$company = $this->appConfig->getValueString('theming', 'name', '');
-		$payload = $this->call($user, $person, 'people', ['lang' => $this->lang()] + ($company !== '' ? ['companyName' => $company] : []), [200, 202]);
+		$payload = $this->call($user, $person, 'people', ['lang' => $this->lang(), 'app' => 'nextcloud'] + ($company !== '' ? ['companyName' => $company] : []), [200, 202]);
 		$state = $payload['state'] ?? null;
 		if (!in_array($state, ['confirmed', 'unconfirmed'], true)) {
 			throw $this->malformed();
