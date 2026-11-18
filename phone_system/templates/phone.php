@@ -13,4 +13,5 @@
 	<h3><?php p($l->t('Recent calls')); ?></h3>
 	<ul id="phone-history" class="phone-history"></ul>
 	<audio id="phone-audio" autoplay></audio>
+	<p class="phone-powered"><?php p($l->t('Powered by')); ?> <a href="https://vodia.com/" target="_blank" rel="noopener noreferrer">Vodia PBX</a></p>
 </main>

@@ -33,3 +33,5 @@ body:has(#phone-system):not(:has(#header)) { background: var(--color-main-backgr
 .phone-setup-stripe { min-height: 500px; }
 /* Inside Nextcloud (not the phone window) the phone sits on a card, as other apps' content does. */
 #content .phone-system { background: var(--color-main-background); border-radius: var(--border-radius-container-large, 16px); margin-top: 24px; padding: 20px 24px; box-shadow: 0 0 10px var(--color-box-shadow); }
+.phone-powered { margin-top: 24px; font-size: 13px; color: var(--color-text-maxcontrast); }
+.phone-powered a { color: inherit; text-decoration: underline; }

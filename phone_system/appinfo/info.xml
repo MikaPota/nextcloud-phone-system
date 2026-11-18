@@ -17,7 +17,7 @@ Voice runs in the browser with WebRTC; no softphone to install. Microphone acces
 The phone system is hosted by GCNA in the EU. Guides and the service provider's contact: https://gcn-alliance.com/support/nextcloud/
 
 More about the [phone system for Nextcloud](https://gcn-alliance.com/nextcloud-pbx/). In German: [Nextcloud Telefonanlage](https://gcn-alliance.com/de/nextcloud-telefonanlage/).]]></description>
-    <version>0.4.2</version>
+    <version>0.4.3</version>
     <licence>agpl</licence>
     <author homepage="https://gcn-alliance.com">GCN Alliance</author>
     <namespace>PhoneSystem</namespace>

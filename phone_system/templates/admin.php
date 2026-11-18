@@ -12,4 +12,5 @@
 		<thead><tr><th><?php p($l->t('User')); ?></th><th><?php p($l->t('Extension')); ?></th><th><?php p($l->t('Web password of the extension')); ?></th><th></th></tr></thead>
 		<tbody></tbody>
 	</table>
+	<p class="phone-powered"><?php p($l->t('Powered by')); ?> <a href="https://vodia.com/" target="_blank" rel="noopener noreferrer">Vodia PBX</a></p>
 </div>
