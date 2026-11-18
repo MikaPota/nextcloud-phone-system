@@ -20,6 +20,7 @@ use Psr\Log\LoggerInterface;
  */
 class Gcna {
 	private const PROOF_LABEL = 'gcna-installation-proof/v1:';
+	private const RENEW_BEFORE = 7 * 86400;
 
 	public function __construct(
 		private IAppConfig $config,
@@ -68,6 +69,11 @@ class Gcna {
 	}
 
 	private function token(): ?string {
+		return $this->stored()['token'] ?? null;
+	}
+
+	/** The stored, still valid credential: token and expiry. */
+	private function stored(): ?array {
 		$stored = $this->config->getValueString(Application::APP_ID, 'installation_token');
 		if ($stored === '') {
 			return null;
@@ -76,7 +82,25 @@ class Gcna {
 		if (!is_array($token) || ($token['installation'] ?? null) !== $this->installationId() || ($token['expires'] ?? 0) <= time()) {
 			return null;
 		}
-		return $token['token'];
+		return $token;
+	}
+
+	/**
+	 * GCNA's link lasts 30 days. With fewer than 7 left, renew it with the token and the installation proof
+	 * and store the fresh token. Refused or unreachable: the stored link stays, the next run tries again.
+	 */
+	public function renewIfDue(): bool {
+		$stored = $this->stored();
+		if ($stored === null || $stored['expires'] - time() > self::RENEW_BEFORE) {
+			return false;
+		}
+		try {
+			$this->storeToken($this->post('/v1/installation/renew', $this->identity(), 200, true));
+		} catch (GcnaError $error) {
+			$this->logger->warning('Phone System: GCNA link not renewed: {message}', ['message' => $error->getMessage()]);
+			return false;
+		}
+		return true;
 	}
 
 	private function storeToken(array $payload): void {
